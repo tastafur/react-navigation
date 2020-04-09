@@ -198,6 +198,10 @@ export type BottomTabBarOptions = {
    * Style object for the tab bar container.
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * Change the height for default of tab bar container.
+   */
+  tabBarHeight?: number;
 };
 
 export type BottomTabBarProps = BottomTabBarOptions & {
