@@ -52,7 +52,12 @@ export default function BottomTabBar({
 }: Props) {
   const { colors } = useTheme();
 
-  const [dimensions, setDimensions] = React.useState(Dimensions.get('window'));
+  const [dimensions, setDimensions] = React.useState(() => {
+    const { height = 0, width = 0 } = Dimensions.get('window');
+
+    return { height, width };
+  });
+
   const [layout, setLayout] = React.useState({
     height: 0,
     width: dimensions.width,
@@ -117,7 +122,7 @@ export default function BottomTabBar({
   const handleLayout = (e: LayoutChangeEvent) => {
     const { height, width } = e.nativeEvent.layout;
 
-    setLayout(layout => {
+    setLayout((layout) => {
       if (height === layout.height && width === layout.width) {
         return layout;
       } else {

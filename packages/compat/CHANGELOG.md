@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.8](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.7...@react-navigation/compat@5.1.8) (2020-04-08)
+
+
+### Bug Fixes
+
+* use 1 as default in compatibility pop action ([4408117](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/commit/44081172d440c713ad3543a2d5e1e18ebc8f72a4))
+
+
+
+
+
+## [5.1.7](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.6...@react-navigation/compat@5.1.7) (2020-03-30)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
+## [5.1.6](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.5...@react-navigation/compat@5.1.6) (2020-03-23)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
+## [5.1.5](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.4...@react-navigation/compat@5.1.5) (2020-03-22)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
+## [5.1.4](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.3...@react-navigation/compat@5.1.4) (2020-03-19)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
+## [5.1.3](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.2...@react-navigation/compat@5.1.3) (2020-03-17)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
+## [5.1.2](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.1...@react-navigation/compat@5.1.2) (2020-03-16)
+
+**Note:** Version bump only for package @react-navigation/compat
+
+
+
+
+
 ## [5.1.1](https://github.com/react-navigation/react-navigation/tree/master/packages/compat/compare/@react-navigation/compat@5.1.0...@react-navigation/compat@5.1.1) (2020-03-03)
 
 **Note:** Version bump only for package @react-navigation/compat

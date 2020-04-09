@@ -6,6 +6,8 @@ import {
   Platform,
   StatusBar,
   I18nManager,
+  Dimensions,
+  ScaledSize,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { enableScreens } from 'react-native-screens';
@@ -114,7 +116,7 @@ const THEME_PERSISTENCE_KEY = 'THEME_TYPE';
 Asset.loadAsync(StackAssets);
 
 export default function App() {
-  const containerRef = React.useRef<NavigationContainerRef>();
+  const containerRef = React.useRef<NavigationContainerRef>(null);
 
   // To test deep linking on, run the following in the Terminal:
   // Android: adb shell am start -a android.intent.action.VIEW -d "exp://127.0.0.1:19000/--/simple-stack"
@@ -196,9 +198,23 @@ export default function App() {
     };
   }, [theme.colors, theme.dark]);
 
+  const [dimensions, setDimensions] = React.useState(Dimensions.get('window'));
+
+  React.useEffect(() => {
+    const onDimensionsChange = ({ window }: { window: ScaledSize }) => {
+      setDimensions(window);
+    };
+
+    Dimensions.addEventListener('change', onDimensionsChange);
+
+    return () => Dimensions.removeEventListener('change', onDimensionsChange);
+  }, []);
+
   if (!isReady) {
     return null;
   }
+
+  const isLargeScreen = dimensions.width > 900;
 
   return (
     <PaperProvider theme={paperTheme}>
@@ -208,7 +224,7 @@ export default function App() {
       <NavigationContainer
         ref={containerRef}
         initialState={initialState}
-        onStateChange={state =>
+        onStateChange={(state) =>
           AsyncStorage.setItem(
             NAVIGATION_PERSISTENCE_KEY,
             JSON.stringify(state)
@@ -216,7 +232,7 @@ export default function App() {
         }
         theme={theme}
       >
-        <Drawer.Navigator>
+        <Drawer.Navigator drawerType={isLargeScreen ? 'permanent' : undefined}>
           <Drawer.Screen
             name="Root"
             options={{
@@ -240,13 +256,15 @@ export default function App() {
                   name="Home"
                   options={{
                     title: 'Examples',
-                    headerLeft: () => (
-                      <Appbar.Action
-                        color={theme.colors.text}
-                        icon="menu"
-                        onPress={() => navigation.toggleDrawer()}
-                      />
-                    ),
+                    headerLeft: isLargeScreen
+                      ? undefined
+                      : () => (
+                          <Appbar.Action
+                            color={theme.colors.text}
+                            icon="menu"
+                            onPress={() => navigation.toggleDrawer()}
+                          />
+                        ),
                   }}
                 >
                   {({
@@ -280,12 +298,12 @@ export default function App() {
                             theme.dark ? 'light' : 'dark'
                           );
 
-                          setTheme(t => (t.dark ? DefaultTheme : DarkTheme));
+                          setTheme((t) => (t.dark ? DefaultTheme : DarkTheme));
                         }}
                       />
                       <Divider />
                       {(Object.keys(SCREENS) as (keyof typeof SCREENS)[]).map(
-                        name => (
+                        (name) => (
                           <List.Item
                             key={name}
                             title={SCREENS[name].title}
@@ -297,7 +315,7 @@ export default function App() {
                   )}
                 </Stack.Screen>
                 {(Object.keys(SCREENS) as (keyof typeof SCREENS)[]).map(
-                  name => (
+                  (name) => (
                     <Stack.Screen
                       key={name}
                       name={name}
