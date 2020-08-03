@@ -237,6 +237,10 @@ export type BottomTabBarOptions = {
    * Style object for the tab bar container.
    */
   style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
+  /**
+   * Change the height for default of tab bar container.
+   */
+  tabBarHeight?: number;
 };
 
 export type BottomTabBarProps<T = BottomTabBarOptions> = T & {

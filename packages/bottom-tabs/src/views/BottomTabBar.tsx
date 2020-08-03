@@ -48,6 +48,7 @@ export default function BottomTabBar({
   showLabel,
   style,
   tabStyle,
+  tabBarHeight,
 }: Props) {
   const { colors } = useTheme();
   const buildLink = useLinkBuilder();
@@ -202,7 +203,7 @@ export default function BottomTabBar({
           position: isTabBarHidden ? 'absolute' : null,
         },
         {
-          height: DEFAULT_TABBAR_HEIGHT + paddingBottom,
+          height: (tabBarHeight || DEFAULT_TABBAR_HEIGHT) + paddingBottom,
           paddingBottom,
           paddingHorizontal: Math.max(insets.left, insets.right),
         },
